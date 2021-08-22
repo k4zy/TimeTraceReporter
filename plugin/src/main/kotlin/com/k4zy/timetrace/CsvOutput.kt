@@ -4,9 +4,15 @@ import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
 import org.gradle.BuildResult
 
 class CsvOutput : Output {
+    private val headers = listOf(
+        "timestamp", "order", "task", "success", "did_work", "skipped", "ms", "date",
+        "cpu", "memory", "os"
+    )
+
     override fun flush(taskResults: List<TaskResult>, buildResult: BuildResult) {
-        taskResults.map {
-            listOf(it.executionTime.toString(), it.taskPath)
+        val sysInfo = SysInfo()
+        taskResults.mapIndexed { index, taskResult ->
+            taskResult.toCsvRow(index, sysInfo)
         }.let { rows ->
             csvWriter().writeAll(rows, "test.csv")
         }
