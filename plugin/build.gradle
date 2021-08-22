@@ -1,11 +1,16 @@
 plugins {
     id 'java-gradle-plugin'
     id 'org.jetbrains.kotlin.jvm' version '1.4.31'
+    id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.14.0'
 }
 
 repositories {
     mavenCentral()
 }
+
+group = 'com.k4zy'
+version = '0.1'
 
 gradlePlugin {
     // Define the plugin
@@ -13,8 +18,16 @@ gradlePlugin {
         greeting {
             id = 'com.k4zy.time-trace'
             implementationClass = 'com.k4zy.timetrace.TimeTraceReporterPlugin'
+            displayName = "Time trace plugin"
+            description = "Measure the execution time of each task."
         }
     }
+}
+
+pluginBundle {
+    website = 'https://github.com/k4zy/TimeTraceReporter'
+    vcsUrl = 'https://github.com/k4zy/TimeTraceReporter.git'
+    tags = ['performance', 'build', 'metrics']
 }
 
 sourceSets {
