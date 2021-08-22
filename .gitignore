@@ -1,5 +1,17 @@
-# Ignore Gradle project-specific cache directory
+*.iml
 .gradle
+.idea/
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
 
-# Ignore Gradle build output directory
-build
+plugin/build/
