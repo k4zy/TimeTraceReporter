@@ -10,8 +10,10 @@ class CsvOutput : Output {
     )
 
     override fun flush(taskResults: List<TaskResult>, buildResult: BuildResult) {
+        println("Csv Output")
         val sysInfo = SysInfo()
         taskResults.mapIndexed { index, taskResult ->
+            println(taskResult)
             taskResult.toCsvRow(index, sysInfo)
         }.let { rows ->
             csvWriter().writeAll(rows, "test.csv")
