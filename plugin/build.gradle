@@ -15,7 +15,7 @@ version = '0.1'
 gradlePlugin {
     // Define the plugin
     plugins {
-        greeting {
+        timeTraceReporter {
             id = 'com.k4zy.time-trace'
             implementationClass = 'com.k4zy.timetrace.TimeTraceReporterPlugin'
             displayName = "Time trace plugin"
