@@ -17,12 +17,6 @@ class TimeTraceReporterPlugin : Plugin<Project> {
         if (ext.csvReport) {
             outputs.add(CsvOutput())
         }
-
-        project.tasks.register("greeting") { task ->
-            task.doLast {
-                println("Hello from plugin 'TimeTraceReporter.greeting'")
-            }
-        }
         project.gradle.addBuildListener(BuildTimeListener(this))
     }
 }

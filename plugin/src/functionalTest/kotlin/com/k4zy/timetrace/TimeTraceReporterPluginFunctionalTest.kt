@@ -23,6 +23,11 @@ class TimeTraceReporterPluginFunctionalTest {
             plugins {
                 id('com.k4zy.time-trace')
             }
+            task greeting {
+                doLast {
+                    println 'Hello world!'
+                }
+            }
         """
         )
 
@@ -52,6 +57,11 @@ class TimeTraceReporterPluginFunctionalTest {
             timeTraceReporter {
                 csvReport = true
             }
+            task greeting {
+                doLast {
+                    println 'Hello world!'
+                }
+            }
         """
         )
 
@@ -64,6 +74,6 @@ class TimeTraceReporterPluginFunctionalTest {
         val result = runner.build()
 
         // Verify the result
-        assertTrue(result.output.contains("Console Output"))
+        assertTrue(result.output.contains("Csv Output"))
     }
 }
