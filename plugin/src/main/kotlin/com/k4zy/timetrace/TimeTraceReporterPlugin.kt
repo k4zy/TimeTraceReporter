@@ -7,16 +7,15 @@ import org.gradle.api.Project
 import org.gradle.api.Plugin
 
 class TimeTraceReporterPlugin : Plugin<Project> {
-    val outputs: MutableList<Output> = mutableListOf(ConsoleOutput())
+    val outputs: MutableList<Output> = mutableListOf()
     override fun apply(project: Project) {
         project.extensions.create(
             TimeTraceReporterExtension.NAME,
-            TimeTraceReporterExtension::class.java
+            TimeTraceReporterExtension::class.java,
         )
         val ext = project.extensions.getByType(TimeTraceReporterExtension::class.java)
-        if (ext.csvReport) {
-            outputs.add(CsvOutput())
-        }
+        outputs.add(ConsoleOutput(ext))
+        outputs.add(CsvOutput(ext))
         project.gradle.addBuildListener(BuildTimeListener(this))
     }
 }

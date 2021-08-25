@@ -9,8 +9,7 @@ data class TaskResult(
     val taskPath: String,
     val didWork: Boolean,
 ) {
-    fun toCsvRow(idx: Int, sysInfo: SysInfo): List<String> {
-        val localDateTime = LocalDateTime.now()
+    fun toCsvRow(idx: Int, localDateTime: LocalDateTime, sysInfo: SysInfo): List<String> {
         return listOf(
             localDateTime.toEpochSecond(ZoneOffset.UTC).toString(),
             idx.toString(),
